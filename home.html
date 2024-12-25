@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fly File</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .upload-container {
+            text-align: center;
+        }
+        .login-container {
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #5cb85c;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #269af9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2592ec;
+        }
+        input[type="file"] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome to Fly File</h1>
+        <h2>You are connected to the server</h2>
+        <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+            <div class="upload-container">
+                <label for="fileInput" id="uploadButton">
+                    <button type="button">Upload</button>
+                </label>
+                <input type="file" id="fileInput" name="file" onchange="uploadFile()">
+                <button type="submit">Download</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const uploadButton = document.getElementById('uploadButton');
+        const fileInput = document.getElementById('fileInput');
+        const uploadForm = document.getElementById('uploadForm');
+
+        uploadButton.addEventListener('click', () => {
+            fileInput.click(); // Open file explorer when Upload button is clicked
+        });
+
+        function uploadFile() {
+            if (fileInput.files.length > 0) {
+                uploadForm.submit(); // Automatically submit the form after file selection
+            }
+        }
+    </script>
+</body>
+</html>
